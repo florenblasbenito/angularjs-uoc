@@ -1,0 +1,83 @@
+﻿
+<p class="text-info">
+    Gracias por comprar en nuestra tienda<br />
+    Aquí puedes editar tu carrito, borrar el pedido, volver atrás o salir fuera de la plataforma.
+</p>
+<div>
+<a class="glyphicon glyphicon-menu-hamburger col-xs-11 store-separate-bloq" href="#/home" >
+</a>
+
+<a class="glyphicon glyphicon-log-out store-separate-bloq" href="#/login" >
+</a>
+</div>
+<div class="row">
+    <div class="col-sm-8">
+        <!-- items -->
+        <table class="table table-bordered table-hover">
+            <!-- header -->
+            <tr class="well">
+                <td><b>Item</b></td>
+                <td class="tdCenter"><b>Cantidad</b></td>
+                <td class="tdRight"><b>Precio</b></td>
+                <td></td>
+            </tr>
+            <!-- empty cart message -->
+            <tr ng-hide="cart.getTotalCount() > 0" >
+                <td class="tdCenter" colspan="4">
+                    Tu carrito está vacio.
+                </td>
+            </tr>
+
+            <!-- cart items -->
+            <tr ng-repeat="item in cart.items | orderBy:'author'">
+                <td>{{item.author}}</td>
+                <td class="tdCenter">
+                <div class="col-sm-4 col-sm-offset-4">
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button class="btn btn-success" type="button" ng-disabled="item.quantity >= 1000" ng-click="cart.addItem(item.id, item.author, item.price, +1)"><span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                      </span>
+                      <input type="tel" ng-model="item.quantity" class="form-control" ng-change="cart.saveItems()" style="text-align: center">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-disabled="item.quantity <= 1" ng-click="cart.addItem(item.id, item.author, item.price, -1)"><span class="glyphicon glyphicon-minus"></span>
+                        </button>
+                      </span>
+                    </div>
+                </div>
+                </td>
+                <td class="tdRight">{{item.price * item.quantity | currency : "€"}}</td>
+                <td class="tdCenter" title="remove from cart">
+                  <a href="" ng-click="cart.addItem(item.id, item.author, item.price, -10000000)" >
+                  <span class="glyphicon glyphicon-remove"></span>
+                  </a>
+                  </td>
+            </tr>
+
+            <!-- footer -->
+            <tr class="well">
+                <td><b>Total</b></td>
+                <td class="tdCenter"><b>{{cart.getTotalCount()}}</b></td>
+                <td class="tdRight"><b>{{cart.getTotalPrice() | currency : "€"}}</b></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- buttons -->
+    <div class="col-sm-4">
+      <p class="text-info">
+      <a href="#/list" title="Volver atrás">
+        <button class="btn btn-block btn-default" ng-disabled="cart.getTotalCount() < 1">
+        <span class="glyphicon glyphicon-chevron-left"></span> Volver atrás
+        </button>
+      </a>
+        <button class="btn btn-block btn-danger" ng-click="cart.clearItems()" ng-disabled="cart.getTotalCount() < 1" >
+        <span class="glyphicon glyphicon-trash"></span> Limpiar el carrito.
+        </button>
+      </p>
+
+      <p class="text-info">     
+      </p>
+    </div>
+</div>

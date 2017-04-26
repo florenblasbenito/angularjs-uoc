@@ -1,0 +1,47 @@
+<p class="text-info">
+    Bienvenido a la Book Store de Floren Blas.<br />
+    Usted puede encontrar y comprar el libro que desea sólo en unos pocos pasos..<br />
+    Sólo mediante la barra de búsqueda para seleccionar el libro que desea y añadirlos a su carrito de compras .<br />
+    Cuando haya terminado , haga clic en el icono del carrito de la compra para revisar su pedido.<br />
+    Además , haga clic en el título del libro o imagen , pudiendo ver el detalle del libro.
+</p>
+
+<p>
+    <input ng-model="search" placeholder="Enter keywords to search..." class="form-control">
+</p>
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <tr class="well">
+            <td class="tdRight" colspan="4" >
+                <a href="index.html#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <b>{{cart.getTotalCount()}}</b> productos, <b>{{cart.getTotalPrice() | currency}}</b>
+                </a>
+            </td>
+        </tr>
+        <tr ng-repeat="product in store.products | orderBy:'name' | filter:search" >
+            <td class="tdCenter BookThumbnail"><a href="#/products/{{product.id}}" ><img ng-src="{{product.screenshot}}" alt="{{product.name}}" class="img-thumbnail img-responsive" /></a></td>
+            <td>
+                <a href="#/products/{{product.id}}"><b>{{product.name}}</b></a><br />
+                {{product.description}}
+            </td>
+            <td class="tdRight">
+                {{product.price | currency}}
+            </td>
+            <td class="tdCenter">
+                <a href="" ng-click="cart.addItem(product.id, product.name, product.price, 1)">
+                    Añadir al carrito
+                </a>
+            </td>
+        </tr>
+        <tr class="well">
+            <td class="tdRight" colspan="4">
+                <a href="index.html#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>

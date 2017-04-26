@@ -1,0 +1,19 @@
+﻿<p class="text-info">
+	Bienvenido a la tienda de libros de
+	<b>Floren Blas
+	</b>
+	<br />
+	Aquí puedes encontrar el libro que necesitas.
+	<br />
+	Antes de nada, tienes que ingresar tu nombre y 
+</br>contraseña para continuar.
+<br />
+Muchas gracias.
+</p>
+
+<div ng-controller="HttpGetController as ctrl" class="row col-xs-3">
+	<p class="store-inputlogin-u">Usuario: <input type="text" name="firstName" ng-model="ctrl.usuario" required /></p>
+	<p class="store-inputlogin-u">Contraseña: <input type="text" name="lastName" ng-model="ctrl.contrasena" required /></p>
+	<button ng-click="ctrl.sendData()" class="btn btn-primary btn-lg">Enviar</button>
+	<p ng-bind="ctrl.postDataResponse"></p>    
+</div>

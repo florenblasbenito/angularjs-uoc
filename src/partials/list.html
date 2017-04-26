@@ -1,0 +1,70 @@
+<div class="col-xs-12 store-background-tablelist">
+<div class="col-xs-12">
+
+</div>
+<h1 class="store-color-blau">
+	Listado de libros disponibles
+</h1>
+<p class="store-title-leftlist">A continuación te informamos de los libros que tenemos disponibles. Puedes acceder al detalle y posteriormente comprarlos clicando en su imágen.</p>
+
+<div ng-controller="mainController">
+<div class="col-xs12 text-center">
+
+<div class="table-responsive">
+<table class="table table-hover table-bordered col-xs-12">
+<tr class="well">
+	<div class="col-xs-2 store-menu-left">
+		<a class="glyphicon glyphicon-menu-hamburger" href="#/home" >
+		</a>
+	</div>
+	<div class="tdRight">
+		<a class="glyphicon glyphicon-log-out" href="#/login" >
+		</a>
+
+		<td class="tdRight">
+			<a href="#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+				<span class="glyphicon glyphicon-shopping-cart"></span>
+				<b>{{cart.getTotalCount()}}</b> producto, <b>{{cart.getTotalPrice() | currency : "€"}}</b>
+			</a>
+		</td>
+	</tr>
+	<tr colspan="8" ng-repeat="product in store.products">
+
+		<td ng-repeat="n in names  | limitTo:05" class="store-plist">
+			<a href="#/products/{{n.id}}">
+				<img class="store-plist-text" ng-src="{{n.cover}}" alt="{{n.id}}" class="img-thumbnail img-responsive" />
+				<p class="col-xs-12 store-plist-tcenter"><span ng-hide="{{n.id}}"></span></a>
+					<span class="store-color-titlelist">Título:</span></br>{{n.title}}
+					<div class="store-price-list"><span class="store-color-titlelist">Precio:</span> {{n.price | currency : "€"}}</div>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="tdRight">
+				{{n.price | currency : "€"}}
+			</td>
+		</tr>
+		<tr class="well">
+			<td class="tdRight" colspan="4">
+				<a href="#/cart" title="Ir al carrito" ng-disabled="cart.getTotalCount() < 1">
+					<span class="glyphicon glyphicon-shopping-cart"></span>
+					<b>{{cart.getTotalCount()}}</b> producto, <b>{{cart.getTotalPrice() | currency : "€"}}</b>
+				</a>
+			</td>
+		</tr>
+	</table>
+</div>
+<nav>
+	<ul class="pagination">
+		<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+		<li class="active"><a href="#/list">1 <span class="sr-only">(current)</span></a></li>
+		<li class="disabled"><a href="#/list">2 <span class="sr-only">(current)</span></a></li>
+		<li class="disabled"><a href="#/list">3 <span class="sr-only">(current)</span></a></li>
+		<li class="disabled"><a href="#/list">4 <span class="sr-only">(current)</span></a></li>
+		<li class="disabled"><a href="#/list">5 <span class="sr-only">(current)</span></a></li>
+
+	</ul>
+</nav>
+
+
+

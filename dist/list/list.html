@@ -1,0 +1,103 @@
+<h1>
+<a href="index.html#/store" >Listado de libros disponibles
+</a>   
+</h1>
+<p>A continuación tenemos un listado de elementos sobre cada uno de los
+cuales podríamos interactuar para acceder a una página de detalle.</p>
+
+<!--<table class="table table‐striped">
+<thead>
+<tr>
+	<th>ID</th>
+	<th>Nombre</th>
+	<th>Acciones</th>
+</tr>
+</thead>
+<tbody>
+<tr ng‐repeat="user in ctrl.userList">
+	<td ng‐bind="user.id"></td>
+	<td ng‐bind="user.name"></td>
+	<td><a href="{{::'#/detail/'+user.id}}" class="btn btn‐info"
+		role="button">Detalles</a></td>
+	</tr>
+</tbody>
+</table>-->
+
+
+<div >
+<a class="glyphicon glyphicon-menu-hamburger" href="index.html#/list" >
+</a>
+</div>
+</r>
+<div class="col-xs-12 store-background-tablelist">
+<div class="col-xs-12">
+<!--<h1 class="col-xs-4">
+<a href="#/products/{{product}}" >Detalle del pedido</a>
+</h1>
+<h1 class="col-xs-4">
+<a href="index.html#/store" >Detalle del pedido
+</a>   
+</h1>-->
+</div>
+
+<div ng-controller="mainController">
+<div class="jumbotron text-center">
+</div>
+<div class="col-xs12 text-center">
+
+<div class="table-responsive">
+<div class="table-responsive">
+	<table class="table table-hover table-bordered col-xs-12">
+		<tr class="well">
+			<td class="tdRight">
+				<a href="index.html#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+					<span class="glyphicon glyphicon-shopping-cart"></span>
+					<b>{{cart.getTotalCount()}}</b> producto, <b>{{cart.getTotalPrice() | currency}}</b>
+				</a>
+			</td>
+		</tr>
+		<tr colspan="8" ng-repeat="product in store.products" >
+
+			<td ng-repeat="n in names" class="store-plist">
+				<a href="#/products/{{n.id}}">
+					<img class="store-plist-text" ng-src="{{n.cover}}" alt="{{n.id}}" class="img-thumbnail img-responsive" />
+					<p class="col-xs-8 store-plist-tcenter"><b>{{n.id}}</b></a>
+						{{n.title}}
+						<div>{{n.price}}</div><b>{{cart.getTotalPrice() | currency}}</b>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td class="tdRight">
+					{{product.price | currency}}
+				</td>
+				<td class="tdCenter">
+					<a href="" ng-click="cart.addItem(product.id, product.name, product.price, 1)">
+						Añadir al carro
+					</a>
+				</td>
+			</tr>
+			<tr class="well">
+				<td class="tdRight" colspan="4">
+					<a href="index.html#/cart" title="Ir al carrito" ng-disabled="cart.getTotalCount() < 1">
+						<span class="glyphicon glyphicon-shopping-cart"></span>
+						<b>{{cart.getTotalCount()}}</b> producto, <b>{{cart.getTotalPrice() | currency}}</b>
+					</a>
+				</td>
+			</tr>
+		</table>
+		<ul class="pagination">
+			<li class="disabled">
+				<a href="#">&laquo;</a>
+			</li>
+			<li class="active">
+				<a href="#">1 <span class="sr-only">(página actual)</span></a>
+			</li>
+			...
+		</ul>
+	</div>
+	<a href="partials/logout.html" target="_parent"><button ng-click="logOut()">Log out</button></a>
+</div>
+
+
+

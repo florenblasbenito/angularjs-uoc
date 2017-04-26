@@ -1,0 +1,2 @@
+!function(){var r=angular.module("storeCtrl",[]);r.controller("storeController",["$scope","$routeParams","DataService",function(r,e,t){r.store=t.store,r.cart=t.cart,null!=e.productId&&(r.product=r.store.getProduct(e.productId))}]),r.controller("ReviewController",function(){this.review={},this.addReview=function(r){r.reviews.push(this.review),this.review={}}})}();
+//# sourceMappingURL=maps/controllers.js.map
